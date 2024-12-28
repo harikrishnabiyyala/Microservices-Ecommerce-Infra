@@ -1,0 +1,53 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    editable: false
+    jsonData:
+      httpMethod: POST
+      exemplarTraceIdDestinations:
+        - name: trace_id
+          datasourceUid: tempo
+          
+  - name: Tempo
+    type: tempo
+    access: proxy
+    orgId: 1
+    url: http://tempo:3200
+    basicAuth: false
+    isDefault: true
+    version: 1
+    editable: false
+    apiVersion: 1
+    uid: tempo
+    jsonData:
+      httpMethod: GET
+      tracesToLogs:
+        datasourceUid: 'loki'
+      nodeGraph:
+        enabled: true
+  
+  - name: Loki
+    type: loki
+    uid: loki
+    access: proxy
+    orgId: 1
+    url: http://loki:3100
+    basicAuth: false
+    isDefault: false
+    version: 1
+    editable: false
+    apiVersion: 1
+    jsonData:
+      derivedFields:
+        - name: TraceID
+          datasourceName: Tempo  # Name of your tracing datasource for linking logs to traces.
+          matcherRegex: traceID=([^,]+)  # Regex to capture the traceId from logs.
+          url: $${__value.raw}  # URL to link to Tempo with the traceId.
+          datasourceUid: tempo  # UID of the Tempo datasource.
+        - name: SpanID
+          datasourceName: Tempo  # Name of your tracing datasource for linking logs to spans.
+          matcherRegex: spanId=([^\]]+)  # Regex to capture the spanId from logs.
