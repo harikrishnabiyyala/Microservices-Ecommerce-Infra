@@ -25,7 +25,7 @@ The backend consists of several microservices, each responsible for specific fun
 - **Notification Service**: Sends notifications related to orders and other events. [Notification Service Repo](https://github.com/harikrishnabiyyala/notification-service)
 
 ### API Gateway
-- **API Gateway**: Acts as a single entry point for all client requests, routing them to the appropriate microservice while enforcing security through Keycloak.
+- **API Gateway**: Acts as a single entry point for all client requests, routing them to the appropriate microservice while enforcing security through Keycloak. [Api Gateway Repo](https://github.com/harikrishnabiyyala/api-gateway)
 
 ### Resilience Patterns
 - **Circuit Breaker Pattern**: Implemented to prevent cascading failures in microservices.
