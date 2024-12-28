@@ -2,6 +2,9 @@
 
 This README provides a comprehensive guide for a microservices architecture utilizing **Spring Boot** for the backend and **Keycloak** for authentication and authorization. The architecture is designed with scalability and reliability in mind, incorporating various services, messaging systems, and observability tools.
 
+![HighLevelDesign.png](images/HighLevelDesign.png)
+
+
 ## Frontend
 ### React Frontend
 - **React**: A popular JavaScript library for building user interfaces. The React application serves as the client-side interface for interacting with the backend services.
