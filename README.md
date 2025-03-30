@@ -81,3 +81,15 @@ The application is configured for Kubernetes with:
 - Persistent Volumes (PV) and Persistent Volume Claims (PVC) for data storage.
 
 This architecture ensures a robust, scalable, and maintainable microservices application capable of handling various business processes efficiently.
+
+## Continuous Deployment (CD)
+The application infra and microservices are configured with ArgoCD which makes sure the k8's manifest files are in sync with the Actual cluster by periodically
+syncing.
+
+Check [ClusterSetUp.md](ClusterSetUp.md) for more images and setup procedure
+
+![argocd-apps.png](images/argocd-apps.png)
+![infra-app.png](images/infra-app.png)
+![microservices-app.png](images/microservices-app.png)
+
+![1.png](images/1.png)
